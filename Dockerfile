@@ -1,12 +1,11 @@
 FROM ubuntu:xenial
 
-RUN apt-get clean && apt-get update && apt-get install -y locales
+RUN apt-get clean && apt-get update && apt-get install -y locales && rm -rf /var/lib/apt/lists/* \
+    && localedef -i en_US -c -f UTF-8 -A /usr/share/locale/locale.alias en_US.UTF-8
+ENV LANG en_US.utf8
 
-RUN locale-gen en_US.UTF-8
-ENV LANG en_US.UTF-8
-ENV LANGUAGE en_US:en
-ENV LC_ALL en_US.UTF-8
-
-RUN apt-get -y update && apt-get install -y rubygems
+RUN apt-get clean && \
+    apt-get update -y && \
+    apt-get install -y rubygems
 
 RUN gem install puppet-lint
