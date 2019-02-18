@@ -1,3 +1,3 @@
 # docker-puppetcheck
 
-Latest Ubuntu with Puppet lint app.
+Latest Ubuntu with Puppet and Yaml lint app.
